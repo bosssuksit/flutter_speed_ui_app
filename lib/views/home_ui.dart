@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// จุดสำคัญ: ต้องมั่นใจว่า path ตรงนี้ถูกต้องตามโครงสร้างโฟลเดอร์ของคุณ
 import 'package:flutter_speed_ui_app_test/views/a01_ui.dart';
 import 'package:flutter_speed_ui_app_test/views/b01_ui.dart';
+// 1. เพิ่ม Import สำหรับหน้า C01 ตรงนี้
+import 'package:flutter_speed_ui_app_test/views/c01_ui.dart';
 
 class HomeUI extends StatefulWidget {
   const HomeUI({super.key});
@@ -25,7 +26,6 @@ class _HomeUIState extends State<HomeUI> {
                 text: 'Go to A Page',
                 color: const Color(0xFFF8A2ED),
                 onPressed: () {
-                  // คำสั่ง Navigator สำหรับเปิดหน้า A01UI
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const A01UI()),
@@ -38,24 +38,35 @@ class _HomeUIState extends State<HomeUI> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const B01Ui()), // <--- ต้องเป็น B01Ui (u ใหญ่ i เล็ก)
+                    MaterialPageRoute(builder: (context) => const B01Ui()),
+                  );
+                },
+              ),
+              // 2. แก้ไขส่วนของปุ่ม Go to C Page ตรงนี้
+              _buildMenuButton(
+                text: 'Go to C Page',
+                color: const Color(0xFF06B23C),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const C01Ui()),
                   );
                 },
               ),
               _buildMenuButton(
-                  text: 'Go to C Page',
-                  color: const Color(0xFF06B23C),
-                  onPressed: () {}),
+                text: 'Go to D Page',
+                color: const Color(0xFF3CC6C1),
+                onPressed: () {
+                  // ใส่ Navigator สำหรับหน้า D ในอนาคต
+                },
+              ),
               _buildMenuButton(
-                  text: 'Go to D Page',
-                  color: const Color(0xFF3CC6C1),
-                  onPressed: () {}),
-              _buildMenuButton(
-                  text: 'Go to E Page',
-                  color: const Color(0xFFF79E1B),
-                  onPressed: () {}),
+                text: 'Go to E Page',
+                color: const Color(0xFFF79E1B),
+                onPressed: () {
+                  // ใส่ Navigator สำหรับหน้า E ในอนาคต
+                },
+              ),
             ],
           ),
         ),
