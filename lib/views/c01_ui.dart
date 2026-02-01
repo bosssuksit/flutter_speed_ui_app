@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//อย่าลืมสร้างไฟล์ c02_ui.dart และ import ตรงนี้ด้วยนะครับ
-//import 'package:flutter_speed_ui_app_test/views/c02_ui.dart';
+// 1. นำ Comment ออกเพื่อให้รู้จักหน้า C02 (ตรวจสอบชื่อ path ให้ถูกต้องตามโปรเจกต์ของคุณ)
+import 'package:flutter_speed_ui_app_test/views/c02_ui.dart';
 
 class C01Ui extends StatefulWidget {
   const C01Ui({super.key});
@@ -16,7 +16,7 @@ class _C01UiState extends State<C01Ui> {
     // หน่วงเวลา 3 วินาทีแล้วเด้งไปหน้า C02
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        // แนะนำให้ใช้ pushReplacement เพื่อไม่ให้ผู้ใช้กดย้อนกลับมาหน้า Splash
+        // ใช้ pushReplacement เพื่อไม่ให้กดย้อนกลับมาหน้า Splash
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const C02Ui()),
@@ -30,6 +30,7 @@ class _C01UiState extends State<C01Ui> {
     return Scaffold(
       body: Stack(
         children: [
+          // พื้นหลังรูปภาพจาก Network
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -39,13 +40,15 @@ class _C01UiState extends State<C01Ui> {
               ),
             ),
           ),
+          // Overlay สีดำจางๆ เพื่อให้ข้อความอ่านง่ายขึ้น
           Container(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withOpacity(0.2),
           ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // โลโก้ตัว H
                 Container(
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
@@ -79,11 +82,11 @@ class _C01UiState extends State<C01Ui> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF004D40),
+                    color: Colors
+                        .white, // ปรับเป็นสีขาวเพื่อให้เห็นชัดบนรูปพื้นหลัง
                   ),
                 ),
                 const SizedBox(height: 30),
-                // เพิ่มวงกลมโหลดหมุนๆ ให้ดูว่ากำลังโหลด (Optional)
                 const CircularProgressIndicator(
                   color: Colors.white,
                 ),
@@ -96,15 +99,4 @@ class _C01UiState extends State<C01Ui> {
   }
 }
 
-// สร้าง Class C02Ui รอไว้แบบง่ายๆ เพื่อไม่ให้ Code Error
-class C02Ui extends StatelessWidget {
-  const C02Ui({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('C02 Login Page')),
-      body: const Center(child: Text('This is C02 Page')),
-    );
-  }
-}
+// *** ลบ class C02Ui เดิมที่อยู่ท้ายไฟล์นี้ออก เพราะเราจะใช้ไฟล์แยกกัน ***

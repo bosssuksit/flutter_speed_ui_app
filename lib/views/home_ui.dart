@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_ui_app_test/views/a01_ui.dart';
 import 'package:flutter_speed_ui_app_test/views/b01_ui.dart';
-// 1. เพิ่ม Import สำหรับหน้า C01 ตรงนี้
 import 'package:flutter_speed_ui_app_test/views/c01_ui.dart';
+import 'package:flutter_speed_ui_app_test/views/d01_ui.dart';
 
+// ต้องมีคลาส HomeUI ตัวนี้ (ห้ามหาย)
 class HomeUI extends StatefulWidget {
   const HomeUI({super.key});
 
@@ -42,7 +43,6 @@ class _HomeUIState extends State<HomeUI> {
                   );
                 },
               ),
-              // 2. แก้ไขส่วนของปุ่ม Go to C Page ตรงนี้
               _buildMenuButton(
                 text: 'Go to C Page',
                 color: const Color(0xFF06B23C),
@@ -57,7 +57,10 @@ class _HomeUIState extends State<HomeUI> {
                 text: 'Go to D Page',
                 color: const Color(0xFF3CC6C1),
                 onPressed: () {
-                  // ใส่ Navigator สำหรับหน้า D ในอนาคต
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const D01Ui()),
+                  );
                 },
               ),
               _buildMenuButton(
@@ -74,6 +77,7 @@ class _HomeUIState extends State<HomeUI> {
     );
   }
 
+  // Method นี้ต้องอยู่ภายในปีกกาของ _HomeUIState เท่านั้น
   Widget _buildMenuButton({
     required String text,
     required Color color,
@@ -98,4 +102,4 @@ class _HomeUIState extends State<HomeUI> {
       ),
     );
   }
-}
+} // ปีกกาปิดตัวสุดท้ายของคลาส

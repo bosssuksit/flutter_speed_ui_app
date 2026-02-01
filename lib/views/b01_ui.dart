@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-// 1. อย่าลืม Import ไฟล์ b02_ui.dart เพื่อให้รู้จักคลาส B02Ui
 import 'package:flutter_speed_ui_app_test/views/b02_ui.dart';
+// 1. เพิ่ม Import สำหรับหน้า B03 (Register)
+import 'package:flutter_speed_ui_app_test/views/b03_ui.dart';
 
 class B01Ui extends StatelessWidget {
   const B01Ui({super.key});
@@ -37,9 +38,9 @@ class B01Ui extends StatelessWidget {
                   const SizedBox(height: 50),
                   Row(
                     children: [
+                      // ปุ่ม Login
                       Expanded(
                         child: ElevatedButton(
-                          // 2. แก้ไขตรงนี้: ใส่คำสั่ง Navigator.push
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -60,10 +61,18 @@ class B01Ui extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 20),
+                      // ปุ่ม Register
                       Expanded(
                         child: TextButton(
+                          // 2. แก้ไขตรงนี้: ใส่คำสั่ง Navigator.push ไปยัง B03Ui
                           onPressed: () {
-                            // สามารถใส่คำสั่งไปหน้า Register (B03) ได้ที่นี่ในอนาคต
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const B03Ui(), // ไปหน้า B03
+                              ),
+                            );
                           },
                           child: const Text('Register',
                               style:

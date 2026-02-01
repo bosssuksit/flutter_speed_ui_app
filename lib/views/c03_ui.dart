@@ -13,113 +13,127 @@ class _C03UiState extends State<C03Ui> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 35),
-          child: Column(
-            children: [
-              const SizedBox(height: 50),
-              // โลโก้ H สีเขียว
-              Center(
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xFF00C853), width: 2),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: const Text(
-                    'H',
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF00C853),
+        // ใช้ Stack เพื่อวางปุ่มย้อนกลับทับบน SingleChildScrollView
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 35),
+              child: Column(
+                children: [
+                  const SizedBox(
+                      height: 60), // เพิ่มพื้นที่ด้านบนหลบปุ่มย้อนกลับ
+
+                  // โลโก้ H สีเขียว
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: const Color(0xFF00C853), width: 2),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Text(
+                        'H',
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF00C853),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              const Text(
-                'Create Account',
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              ),
-              const Text(
-                'Create an account so you can explore all the existing jobs',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey, fontSize: 14),
-              ),
-              const SizedBox(height: 30),
+                  const SizedBox(height: 30),
+                  const Text(
+                    'Create Account',
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                  const Text(
+                    'Create an account so you can explore all the existing jobs',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
+                  const SizedBox(height: 30),
 
-              // ช่องกรอก Email
-              _buildTextField(label: 'Email', hint: 'Email'),
-              const SizedBox(height: 20),
+                  _buildTextField(label: 'Email', hint: 'Email'),
+                  const SizedBox(height: 20),
 
-              // ช่องกรอก Password
-              _buildTextField(
-                  label: 'Password', hint: 'Password', isPassword: true),
-              const SizedBox(height: 20),
+                  _buildTextField(
+                      label: 'Password', hint: 'Password', isPassword: true),
+                  const SizedBox(height: 20),
 
-              // ช่องกรอก Confirm Password
-              _buildTextField(
-                  label: 'Confirm Password',
-                  hint: 'Confirm Password',
-                  isPassword: true),
-              const SizedBox(height: 40),
+                  _buildTextField(
+                      label: 'Confirm Password',
+                      hint: 'Confirm Password',
+                      isPassword: true),
+                  const SizedBox(height: 40),
 
-              // ปุ่ม SIGN UP
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF00C853),
-                  minimumSize: const Size(double.infinity, 55),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                child: const Text(
-                  'SIGN UP',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 30),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF00C853),
+                      minimumSize: const Size(double.infinity, 55),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                    child: const Text(
+                      'SIGN UP',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
 
-              // ปุ่มย้อนกลับไป Sign In
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text(
-                  'Already have an account',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Text('Or continue with',
-                  style: TextStyle(color: Colors.grey)),
-              const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      'Already have an account',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text('Or continue with',
+                      style: TextStyle(color: Colors.grey)),
+                  const SizedBox(height: 20),
 
-              // Social Buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _socialButton(
-                      'https://p7.hiclipart.com/preview/209/923/21/google-logo-google-search-advertising-google-thumbnail.jpg'),
-                  const SizedBox(width: 15),
-                  _socialButton(
-                      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png'),
-                  const SizedBox(width: 15),
-                  _socialButton(
-                      'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _socialButton(
+                          'https://p7.hiclipart.com/preview/209/923/21/google-logo-google-search-advertising-google-thumbnail.jpg'),
+                      const SizedBox(width: 15),
+                      _socialButton(
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png'),
+                      const SizedBox(width: 15),
+                      _socialButton(
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png'),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
                 ],
               ),
-              const SizedBox(height: 30),
-            ],
-          ),
+            ),
+
+            // --- เพิ่มปุ่มย้อนกลับตรงนี้ ---
+            Positioned(
+              top: 10,
+              left: 10,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+                onPressed: () {
+                  Navigator.pop(context); // กดย้อนกลับไปหน้า C02
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
+  // Helper Widgets คงเดิม
   Widget _buildTextField(
       {required String label, required String hint, bool isPassword = false}) {
     return Column(
