@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// Import หน้าที่เกี่ยวข้อง
 import 'package:flutter_speed_ui_app_test/views/d03_ui.dart';
 import 'package:flutter_speed_ui_app_test/views/d04_ui.dart';
 
@@ -7,14 +6,16 @@ class D02Ui extends StatefulWidget {
   const D02Ui({super.key});
 
   @override
-  State<D02Ui> createState() => _D02UiState();
+  State<D02Ui> createState() => _D02UiState(); // จุดนี้เรียกหา _D02UiState
 }
 
+// แก้ชื่อบรรทัดนี้จาก _C02UiState เป็น _D02UiState
 class _D02UiState extends State<D02Ui> {
   bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
+    // ... โค้ดส่วนอื่นๆ เหมือนเดิมทั้งหมด ...
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -24,7 +25,6 @@ class _D02UiState extends State<D02Ui> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              // 1. ปุ่มย้อนกลับ
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade300),
@@ -36,8 +36,6 @@ class _D02UiState extends State<D02Ui> {
                 ),
               ),
               const SizedBox(height: 30),
-
-              // 2. หัวข้อ Welcome back
               const Text(
                 'Welcome back! Glad\nto see you, Again!',
                 style: TextStyle(
@@ -47,12 +45,8 @@ class _D02UiState extends State<D02Ui> {
                 ),
               ),
               const SizedBox(height: 40),
-
-              // 3. ช่อง Email
               _buildInput('Enter your email'),
               const SizedBox(height: 15),
-
-              // 4. ช่อง Password พร้อมปุ่มเปิด-ปิดตา
               TextField(
                 obscureText: _obscureText,
                 decoration: _inputStyle('Enter your password').copyWith(
@@ -66,8 +60,6 @@ class _D02UiState extends State<D02Ui> {
                   ),
                 ),
               ),
-
-              // 5. ลิงก์ลืมรหัสผ่าน (เชื่อมไปหน้า D04)
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
@@ -85,8 +77,6 @@ class _D02UiState extends State<D02Ui> {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // 6. ปุ่ม Login
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
@@ -99,8 +89,6 @@ class _D02UiState extends State<D02Ui> {
                     style: TextStyle(color: Colors.white, fontSize: 16)),
               ),
               const SizedBox(height: 35),
-
-              // 7. ส่วน Or Login with
               const Row(
                 children: [
                   Expanded(child: Divider()),
@@ -112,8 +100,6 @@ class _D02UiState extends State<D02Ui> {
                 ],
               ),
               const SizedBox(height: 30),
-
-              // 8. Social Buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -121,15 +107,13 @@ class _D02UiState extends State<D02Ui> {
                       'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png'),
                   const SizedBox(width: 20),
                   _socialCard(
-                      'https://p7.hiclipart.com/preview/209/923/21/google-logo-google-search-advertising-google-thumbnail.jpg'),
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png'),
                   const SizedBox(width: 20),
                   _socialCard(
                       'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/600px-Apple_logo_black.svg.png'),
                 ],
               ),
               const SizedBox(height: 40),
-
-              // 9. ลิงก์ไปหน้าสมัครสมาชิก (เชื่อมไปหน้า D03)
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -190,7 +174,23 @@ class _D02UiState extends State<D02Ui> {
         border: Border.all(color: const Color(0xFFE8ECF4)),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Image.network(imageUrl, fit: BoxFit.contain),
+      child: Image.network(
+        imageUrl,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) =>
+            const Icon(Icons.broken_image, color: Colors.grey),
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const Center(
+            child: SizedBox(
+              width: 20,
+              height: 20,
+              child:
+                  CircularProgressIndicator(strokeWidth: 2, color: Colors.grey),
+            ),
+          );
+        },
+      ),
     );
   }
 }

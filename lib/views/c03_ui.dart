@@ -13,15 +13,13 @@ class _C03UiState extends State<C03Ui> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        // ใช้ Stack เพื่อวางปุ่มย้อนกลับทับบน SingleChildScrollView
         child: Stack(
           children: [
             SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: Column(
                 children: [
-                  const SizedBox(
-                      height: 60), // เพิ่มพื้นที่ด้านบนหลบปุ่มย้อนกลับ
+                  const SizedBox(height: 60),
 
                   // โลโก้ H สีเขียว
                   Center(
@@ -98,17 +96,18 @@ class _C03UiState extends State<C03Ui> {
                       style: TextStyle(color: Colors.grey)),
                   const SizedBox(height: 20),
 
+                  // ส่วนของ Social Buttons ที่แก้ไขรูปภาพแล้ว
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       _socialButton(
-                          'https://p7.hiclipart.com/preview/209/923/21/google-logo-google-search-advertising-google-thumbnail.jpg'),
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png'),
                       const SizedBox(width: 15),
                       _socialButton(
                           'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png'),
                       const SizedBox(width: 15),
                       _socialButton(
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png'),
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png'),
                     ],
                   ),
                   const SizedBox(height: 30),
@@ -116,14 +115,14 @@ class _C03UiState extends State<C03Ui> {
               ),
             ),
 
-            // --- เพิ่มปุ่มย้อนกลับตรงนี้ ---
+            // ปุ่มย้อนกลับ
             Positioned(
               top: 10,
               left: 10,
               child: IconButton(
                 icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
                 onPressed: () {
-                  Navigator.pop(context); // กดย้อนกลับไปหน้า C02
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -133,7 +132,8 @@ class _C03UiState extends State<C03Ui> {
     );
   }
 
-  // Helper Widgets คงเดิม
+  // --- Helper Widgets ---
+
   Widget _buildTextField(
       {required String label, required String hint, bool isPassword = false}) {
     return Column(
@@ -145,8 +145,11 @@ class _C03UiState extends State<C03Ui> {
           obscureText: isPassword,
           decoration: InputDecoration(
             hintText: hint,
+            hintStyle: const TextStyle(color: Colors.grey),
             filled: true,
             fillColor: const Color(0xFFF5F5F5),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none),
@@ -164,7 +167,24 @@ class _C03UiState extends State<C03Ui> {
       decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(10)),
-      child: Image.network(imageUrl, fit: BoxFit.contain),
+      child: Image.network(
+        imageUrl,
+        fit: BoxFit.contain,
+        // จัดการกรณีรูปโหลดช้าหรือโหลดไม่ได้
+        errorBuilder: (context, error, stackTrace) =>
+            const Icon(Icons.broken_image, color: Colors.grey),
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const Center(
+            child: SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                  strokeWidth: 2, color: Colors.green),
+            ),
+          );
+        },
+      ),
     );
   }
 }

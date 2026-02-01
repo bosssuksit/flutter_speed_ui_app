@@ -17,7 +17,6 @@ class _C02UiState extends State<C02Ui> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // ใช้ Stack เพื่อให้ปุ่มย้อนกลับวางทับบน SingleChildScrollView ได้
       body: SafeArea(
         child: Stack(
           children: [
@@ -25,10 +24,9 @@ class _C02UiState extends State<C02Ui> {
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: Column(
                 children: [
-                  const SizedBox(
-                      height: 70), // เพิ่ม Gap ด้านบนให้หลบปุ่มย้อนกลับ
+                  const SizedBox(height: 70),
 
-                  // --- ส่วนของ Logo และ Form เหมือนเดิม ---
+                  // --- Logo Section ---
                   Center(
                     child: Container(
                       padding: const EdgeInsets.all(10),
@@ -52,6 +50,7 @@ class _C02UiState extends State<C02Ui> {
                           TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 40),
 
+                  // --- Input Fields ---
                   _buildInputLabel('Email'),
                   const SizedBox(height: 8),
                   TextField(
@@ -78,6 +77,7 @@ class _C02UiState extends State<C02Ui> {
                   ),
                   const SizedBox(height: 30),
 
+                  // --- Sign In Button ---
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
@@ -97,21 +97,23 @@ class _C02UiState extends State<C02Ui> {
                       style: TextStyle(color: Colors.grey)),
                   const SizedBox(height: 25),
 
+                  // --- Social Buttons (จุดที่แก้ไขรูปภาพ) ---
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       _socialButton(
-                          'https://p7.hiclipart.com/preview/209/923/21/google-logo-google-search-advertising-google-thumbnail.jpg'),
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png'),
                       const SizedBox(width: 20),
                       _socialButton(
                           'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png'),
                       const SizedBox(width: 20),
                       _socialButton(
-                          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png'),
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png'),
                     ],
                   ),
                   const SizedBox(height: 50),
 
+                  // --- Sign Up Link ---
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -136,15 +138,13 @@ class _C02UiState extends State<C02Ui> {
               ),
             ),
 
-            // 1. ส่วนปุ่มย้อนกลับ (Back Button)
+            // Back Button
             Positioned(
               top: 10,
               left: 10,
               child: IconButton(
                 icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
-                onPressed: () {
-                  Navigator.pop(context); // กดย้อนกลับไปหน้าก่อนหน้า
-                },
+                onPressed: () => Navigator.pop(context),
               ),
             ),
           ],
@@ -153,7 +153,7 @@ class _C02UiState extends State<C02Ui> {
     );
   }
 
-  // --- Helper Widgets เหมือนเดิม ---
+  // --- Helper Widgets ---
   Widget _buildInputLabel(String label) {
     return Align(
         alignment: Alignment.centerLeft,
@@ -182,7 +182,21 @@ class _C02UiState extends State<C02Ui> {
       decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(10)),
-      child: Image.network(imageUrl, fit: BoxFit.contain),
+      child: Image.network(
+        imageUrl,
+        fit: BoxFit.contain,
+        // เพิ่มส่วนนี้เพื่อป้องกันแอปค้าง/แดง ถ้า URL มีปัญหา
+        errorBuilder: (context, error, stackTrace) =>
+            const Icon(Icons.broken_image, color: Colors.grey),
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const Center(
+              child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2)));
+        },
+      ),
     );
   }
 }

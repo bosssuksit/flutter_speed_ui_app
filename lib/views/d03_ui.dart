@@ -69,7 +69,8 @@ class _D03UiState extends State<D03Ui> {
                   Expanded(child: Divider()),
                   Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('Or Register with')),
+                      child: Text('Or Register with',
+                          style: TextStyle(color: Color(0xFF6A707C)))),
                   Expanded(child: Divider()),
                 ],
               ),
@@ -81,7 +82,7 @@ class _D03UiState extends State<D03Ui> {
                       'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png'),
                   const SizedBox(width: 20),
                   _socialCard(
-                      'https://p7.hiclipart.com/preview/209/923/21/google-logo-google-search-advertising-google-thumbnail.jpg'),
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png'),
                   const SizedBox(width: 20),
                   _socialCard(
                       'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/600px-Apple_logo_black.svg.png'),
@@ -92,7 +93,8 @@ class _D03UiState extends State<D03Ui> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Already have an account? "),
+                  const Text("Already have an account? ",
+                      style: TextStyle(color: Color(0xFF1E232C))),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: const Text(
@@ -104,6 +106,7 @@ class _D03UiState extends State<D03Ui> {
                   ),
                 ],
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -116,6 +119,7 @@ class _D03UiState extends State<D03Ui> {
       obscureText: isPassword,
       decoration: InputDecoration(
         hintText: hint,
+        hintStyle: const TextStyle(color: Color(0xFF8391A1)),
         filled: true,
         fillColor: const Color(0xFFF7F8F9),
         contentPadding:
@@ -138,10 +142,27 @@ class _D03UiState extends State<D03Ui> {
       height: 55,
       width: 85,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: const Color(0xFFE8ECF4)),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Image.network(imageUrl, fit: BoxFit.contain),
+      child: Image.network(
+        imageUrl,
+        fit: BoxFit.contain,
+        // เพิ่ม Error handling และ Loading
+        errorBuilder: (context, error, stackTrace) =>
+            const Icon(Icons.broken_image, color: Colors.grey),
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const Center(
+            child: SizedBox(
+              width: 15,
+              height: 15,
+              child:
+                  CircularProgressIndicator(strokeWidth: 2, color: Colors.grey),
+            ),
+          );
+        },
+      ),
     );
   }
 }
