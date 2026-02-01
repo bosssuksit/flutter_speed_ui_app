@@ -3,8 +3,9 @@ import 'package:flutter_speed_ui_app_test/views/a01_ui.dart';
 import 'package:flutter_speed_ui_app_test/views/b01_ui.dart';
 import 'package:flutter_speed_ui_app_test/views/c01_ui.dart';
 import 'package:flutter_speed_ui_app_test/views/d01_ui.dart';
+// 1. เพิ่ม import หน้า E01
+import 'package:flutter_speed_ui_app_test/views/e01_ui.dart';
 
-// ต้องมีคลาส HomeUI ตัวนี้ (ห้ามหาย)
 class HomeUI extends StatefulWidget {
   const HomeUI({super.key});
 
@@ -27,47 +28,43 @@ class _HomeUIState extends State<HomeUI> {
                 text: 'Go to A Page',
                 color: const Color(0xFFF8A2ED),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const A01UI()),
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const A01UI()));
                 },
               ),
               _buildMenuButton(
                 text: 'Go to B Page',
                 color: const Color(0xFF2346B8),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const B01Ui()),
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const B01Ui()));
                 },
               ),
               _buildMenuButton(
                 text: 'Go to C Page',
                 color: const Color(0xFF06B23C),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const C01Ui()),
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const C01Ui()));
                 },
               ),
               _buildMenuButton(
                 text: 'Go to D Page',
                 color: const Color(0xFF3CC6C1),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const D01Ui()),
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const D01Ui()));
                 },
               ),
               _buildMenuButton(
                 text: 'Go to E Page',
                 color: const Color(0xFFF79E1B),
                 onPressed: () {
-                  // ใส่ Navigator สำหรับหน้า E ในอนาคต
+                  // 2. อัปเดต Navigator ให้ไปหน้า E01
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const E01Ui()),
+                  );
                 },
               ),
             ],
@@ -77,7 +74,6 @@ class _HomeUIState extends State<HomeUI> {
     );
   }
 
-  // Method นี้ต้องอยู่ภายในปีกกาของ _HomeUIState เท่านั้น
   Widget _buildMenuButton({
     required String text,
     required Color color,
@@ -102,4 +98,4 @@ class _HomeUIState extends State<HomeUI> {
       ),
     );
   }
-} // ปีกกาปิดตัวสุดท้ายของคลาส
+}
