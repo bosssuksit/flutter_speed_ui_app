@@ -11,15 +11,15 @@
 
 <img width="250" height="2532" alt="localhost_51709_(iPhone 12 Pro) (9)" src="https://github.com/user-attachments/assets/1cd0118b-f0fc-40d1-b828-3b74bb6044f4" />
 
-<img width="1170" height="2532" alt="localhost_62876_(iPhone 12 Pro)" src="https://github.com/user-attachments/assets/eecfde87-fb3d-4b3a-aabe-f26a93fd86a2" />
-<img width="1170" height="2532" alt="localhost_62876_(iPhone 12 Pro) (1)" src="https://github.com/user-attachments/assets/66df097d-ccc3-4895-b52b-855c21a1c25a" />
+<img width="250" height="2532" alt="localhost_62876_(iPhone 12 Pro)" src="https://github.com/user-attachments/assets/eecfde87-fb3d-4b3a-aabe-f26a93fd86a2" />
+<img width="250" height="2532" alt="localhost_62876_(iPhone 12 Pro) (1)" src="https://github.com/user-attachments/assets/66df097d-ccc3-4895-b52b-855c21a1c25a" />
 
 <img width="250" height="2532" alt="localhost_51709_(iPhone 12 Pro) (11)" src="https://github.com/user-attachments/assets/f3be5b19-c31e-4337-9d8d-3ce91c3fcdfd" />
 <img width="250" height="2532" alt="localhost_51709_(iPhone 12 Pro) (12)" src="https://github.com/user-attachments/assets/ba02f242-0dcc-4bde-8589-380ad6a55b95" />
 <img width="250" height="2532" alt="localhost_51709_(iPhone 12 Pro) (13)" src="https://github.com/user-attachments/assets/9ece99b2-05ad-4c2d-99e8-a1e64da4b550" />
 <img width="250" height="2532" alt="localhost_51709_(iPhone 12 Pro) (14)" src="https://github.com/user-attachments/assets/051fd11c-aa2a-4264-9a4a-5a9e7d7f72d0" />
-<img width="1170" height="2532" alt="localhost_62876_(iPhone 12 Pro) (2)" src="https://github.com/user-attachments/assets/9918c664-a1ca-40d0-98f8-473b517468eb" />
-<img width="1170" height="2532" alt="localhost_62876_(iPhone 12 Pro) (3)" src="https://github.com/user-attachments/assets/1e87fe17-168a-4455-a95e-99567288087c" />
+<img width="250" height="2532" alt="localhost_62876_(iPhone 12 Pro) (2)" src="https://github.com/user-attachments/assets/9918c664-a1ca-40d0-98f8-473b517468eb" />
+<img width="250" height="2532" alt="localhost_62876_(iPhone 12 Pro) (3)" src="https://github.com/user-attachments/assets/1e87fe17-168a-4455-a95e-99567288087c" />
 
 
 <img width="250" height="2532" alt="localhost_51709_(iPhone 12 Pro) (16)" src="https://github.com/user-attachments/assets/07234d31-f3b3-4c8f-b655-02a0b8a8d8b3" />
