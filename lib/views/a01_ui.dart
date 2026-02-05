@@ -11,12 +11,12 @@ class A01UI extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // --- ส่วนที่เพิ่ม: ปุ่มกดย้อนกลับไปหน้า Home ---
+            // --- ส่วนปุ่มกดย้อนกลับ ---
             Align(
               alignment: Alignment.centerLeft,
               child: IconButton(
                 onPressed: () {
-                  Navigator.pop(context); // ย้อนกลับไปหน้า HomeUI
+                  Navigator.pop(context);
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios,
@@ -24,24 +24,25 @@ class A01UI extends StatelessWidget {
                 ),
               ),
             ),
-            // ---------------------------------------
 
-            // ส่วนบน: การ์ดสีชมพูพร้อมรูปภาพ
+            // --- ส่วนบน: การ์ดสีชมพูพร้อมรูปภาพ Saly-1.png ---
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              height: MediaQuery.of(context).size.height *
-                  0.45, // ปรับความสูงลงเล็กน้อยเพื่อให้พอดีกับปุ่ม Back
+              height: MediaQuery.of(context).size.height * 0.45,
               decoration: BoxDecoration(
                 color: const Color(0xFFF8A2ED),
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: const Center(
-                child:
-                    Icon(Icons.rocket_launch, size: 150, color: Colors.white),
+              child: Center(
+                child: Image.asset(
+                  'assets/images/Saly-1.png', // ตรวจสอบชื่อไฟล์และโฟลเดอร์ให้ถูกต้อง
+                  width: 300, // ปรับขนาดรูปภาพตามความเหมาะสม
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
 
-            // ส่วนกลาง: หัวข้อและรายละเอียด
+            // --- ส่วนกลาง: หัวข้อและรายละเอียด ---
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               child: Column(
@@ -67,7 +68,7 @@ class A01UI extends StatelessWidget {
 
             const Spacer(),
 
-            // ส่วนล่าง: ปุ่ม Sign In และ Register
+            // --- ส่วนล่าง: ปุ่ม Sign In และ Register ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               child: Container(
@@ -90,6 +91,8 @@ class A01UI extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFF8A2ED),
                           padding: const EdgeInsets.symmetric(vertical: 20),
+                          elevation:
+                              0, // เอาเงาออกเพื่อให้ดูแบนราบเข้ากับดีไซน์
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
